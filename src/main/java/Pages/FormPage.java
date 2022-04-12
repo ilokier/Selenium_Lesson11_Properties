@@ -1,4 +1,5 @@
 package Pages;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,7 +15,7 @@ import java.util.Random;
 
 
 public class FormPage {
-   private WebDriverWait wait;
+    private WebDriverWait wait;
     @FindBy(id = "validator-message")
     WebElement validatorMsg;
 
@@ -30,12 +31,10 @@ public class FormPage {
     private List<WebElement> yearsOfExp;
     @FindBy(id = "gridRadiosMale")
     private List<WebElement> sex;
-
     @FindBy(css = ".checkbox-profession")
-    private List<WebElement>proffesionList;
-    @FindBy(id ="gridCheckAutomationTester")
+    private List<WebElement> professionList;
+    @FindBy(id = "gridCheckAutomationTester")
     private WebElement proFessionAutomate;
-
     @FindBy(id = "selectContinents")
     private WebElement selectContinent;
     @FindBy(id = "selectSeleniumCommands")
@@ -48,8 +47,6 @@ public class FormPage {
     private WebElement testFileDownloadButton;
     @FindBy(css = ".btn-primary")
     private WebElement signInButton;
-   // private ModelForm modelForm;
-
 
     public FormPage(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -93,7 +90,7 @@ public class FormPage {
 
     public FormPage chooseProfession(int proffesionIndex) {
 //        wait.until(ExpectedConditions.visibilityOfAllElements(proffesionList));
-        proffesionList.get(proffesionIndex).click();
+        professionList.get(proffesionIndex).click();
         return this;
     }
 
@@ -128,7 +125,22 @@ public class FormPage {
         Select sel = new Select(el);
         sel.selectByValue(value);
     }
-
+//    public FormPage fillForm(ModelForm modelform) {
+//        firstName.sendKeys(modelform.getName());
+//        lastName.sendKeys(modelform.getLastName());
+//        eMail.sendKeys(modelform.getEmail());
+//        getRandomElement(sex).click();
+//        age.clear();
+//        age.sendKeys(modelform.getAge());
+//        getRandomElement(yearsOfExp).click();
+//        professionList.get(modelform.getProfession()).click();
+//        chooseSelectOption(modelform.getContinent(), selectContinent);
+//        chooseSelectOption(modelform.getSeleniumCommand1(), seleniumComands);
+//        chooseSelectOption(modelform.getSeleniumCommand2(), seleniumComands);
+//        fileInput.sendKeys(modelform.getPath());
+//
+//        return this;
+//    }
 
 }
 
