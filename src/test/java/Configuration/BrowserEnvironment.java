@@ -12,19 +12,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BrowserEnvironment {
-
     private String browserName = "chrome";
     private boolean headlessBrowser;
     private int webElementTimeout;
     private Logger log = LoggerFactory.getLogger("BrowserEnvironment.class");
     private WebDriver driver;
 
-    public BrowserEnvironment(){
+    public BrowserEnvironment() {
         this.headlessBrowser = false;
         this.webElementTimeout = 20;
-        this.browserName = PropertyStore.BROWSER.isSpecified()?PropertyStore.BROWSER.getValue(): this.browserName;
+        this.browserName = PropertyStore.BROWSER.isSpecified() ? PropertyStore.BROWSER.getValue() : this.browserName;
         this.initBrowserSettings();
     }
+
     public WebDriver getDriver() {
         WebDriver driver;
         switch (this.browserName) {
@@ -48,7 +48,7 @@ public class BrowserEnvironment {
                 driver = new InternetExplorerDriver(optionsdefault);
                 driver.get(System.getProperty("appUrl"));
         }
-        this.driver=driver;
+        this.driver = driver;
         return this.driver;
     }
 

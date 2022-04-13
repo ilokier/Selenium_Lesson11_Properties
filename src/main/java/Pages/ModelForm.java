@@ -23,7 +23,6 @@ public class ModelForm {
         this.path = path;
     }
 
-
     public String getName() {
         return name;
     }

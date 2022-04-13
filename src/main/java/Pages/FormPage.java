@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -57,55 +56,6 @@ public class FormPage {
         return validatorMsg.getText();
     }
 
-    public FormPage setFirstName(String firstname) {
-        firstName.sendKeys(firstname);
-        return this;
-    }
-
-    public FormPage setLastName(String lastname) {
-        lastName.sendKeys(lastname);
-        return this;
-    }
-
-    public FormPage setEmail(String email) {
-        eMail.sendKeys(email);
-        return this;
-    }
-
-    public FormPage chooseSex() {
-        getRandomElement(sex).click();
-        return this;
-    }
-
-    public FormPage setAge(String age) {
-        this.age.clear();
-        this.age.sendKeys(age);
-        return this;
-    }
-
-    public FormPage chooseExperience() {
-        getRandomElement(yearsOfExp).click();
-        return this;
-    }
-
-    public FormPage chooseProfession(int proffesionIndex) {
-//        wait.until(ExpectedConditions.visibilityOfAllElements(proffesionList));
-        professionList.get(proffesionIndex).click();
-        return this;
-    }
-
-    public FormPage selectContinent(String continent) {
-        chooseSelectOption(continent, selectContinent);
-        return this;
-    }
-
-    public FormPage selectSeleniumComands(String seleniumCommand1, String seleniumCommand2) {
-        wait.until(ExpectedConditions.visibilityOf(seleniumComands));
-        chooseSelectOption(seleniumCommand1, seleniumComands);
-        chooseSelectOption(seleniumCommand2, seleniumComands);
-        return this;
-    }
-
     public FormPage attachFile(String path) {
         File file = new File(path);
         fileInput.sendKeys(file.getAbsolutePath());
@@ -125,22 +75,23 @@ public class FormPage {
         Select sel = new Select(el);
         sel.selectByValue(value);
     }
-//    public FormPage fillForm(ModelForm modelform) {
-//        firstName.sendKeys(modelform.getName());
-//        lastName.sendKeys(modelform.getLastName());
-//        eMail.sendKeys(modelform.getEmail());
-//        getRandomElement(sex).click();
-//        age.clear();
-//        age.sendKeys(modelform.getAge());
-//        getRandomElement(yearsOfExp).click();
-//        professionList.get(modelform.getProfession()).click();
-//        chooseSelectOption(modelform.getContinent(), selectContinent);
-//        chooseSelectOption(modelform.getSeleniumCommand1(), seleniumComands);
-//        chooseSelectOption(modelform.getSeleniumCommand2(), seleniumComands);
-//        fileInput.sendKeys(modelform.getPath());
-//
-//        return this;
-//    }
+
+    public FormPage fillForm(ModelForm modelform) {
+        firstName.sendKeys(modelform.getName());
+        lastName.sendKeys(modelform.getLastName());
+        eMail.sendKeys(modelform.getEmail());
+        getRandomElement(sex).click();
+        age.clear();
+        age.sendKeys(modelform.getAge());
+        getRandomElement(yearsOfExp).click();
+        professionList.get(modelform.getProfession()).click();
+        chooseSelectOption(modelform.getContinent(), selectContinent);
+        chooseSelectOption(modelform.getSeleniumCommand1(), seleniumComands);
+        chooseSelectOption(modelform.getSeleniumCommand2(), seleniumComands);
+        attachFile(modelform.getPath());
+
+        return this;
+    }
 
 }
 
